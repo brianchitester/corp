@@ -24,7 +24,7 @@ export const Wallet: FC = () => {
     const network = WalletAdapterNetwork.Devnet;
 
     // You can also provide a custom RPC endpoint.
-    const endpoint = 'https://solana-mainnet.g.alchemy.com/v2/<API-KEY>';
+    const endpoint = `https://solana-mainnet.g.alchemy.com/v2/${process.env.REACT_APP_ALCHEMY_KEY}`;
 
     const wallets = useMemo(
         () => [
