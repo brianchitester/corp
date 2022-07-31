@@ -1,0 +1,71 @@
+{
+  "__typename": "Token",
+  "tokenId": "5880",
+  "tokenContract": {
+    "name": "Zora",
+    "network": "ETHEREUM",
+    "description": null,
+    "collectionAddress": "0xabefbc9fd2f806065b4f3c237d4b59d9a97bcac7",
+    "symbol": "ZORA",
+    "chain": 1
+  },
+  "mintInfo": {
+    "price": {
+      "__typename": "PriceAtTime",
+      "blockNumber": 13483834,
+      "chainTokenPrice": {
+        "decimal": 0,
+        "raw": "0"
+      },
+      "nativePrice": {
+        "decimal": 0,
+        "raw": "0",
+        "currency": {
+          "address": "0x0000000000000000000000000000000000000000",
+          "decimals": 18,
+          "name": "ETH"
+        }
+      },
+      "usdcPrice": {
+        "decimal": 0,
+        "raw": "0"
+      }
+    },
+    "originatorAddress": "0xe6445bd1d9674fe7fbedad2f56f3b1eaea1b029e",
+    "toAddress": "0xe6445bd1d9674fe7fbedad2f56f3b1eaea1b029e",
+    "mintContext": {
+      "__typename": "TransactionInfo",
+      "blockNumber": 13483834,
+      "blockTimestamp": "2021-10-25T02:14:45+00:00",
+      "transactionHash": "0x270286a512f9fceaf9d8e451dc20741074fa60455848b525a6c67207fb423ed1",
+      "logIndex": 479
+    }
+  },
+  "collectionAddress": "0xabefbc9fd2f806065b4f3c237d4b59d9a97bcac7",
+  "lastRefreshTime": "2022-06-01T18:56:03.842000+00:00",
+  "owner": "0x3839acf1ee7699d1f46b1be840d8ad8317fdf757",
+  "name": "The In Between",
+  "description": "This project was made over the course of 14 hours two years ago and it changed my life forever. It was fall and I was in Malibu making Whethan's album Fantasy with a few of my closest friends. We didn't really see anyone else for a few weeks, some days we'd work on the songs together, others we'd all contribute separately and intermittently check in on each other's progress. Every day was pretty much exclusively filled up with Fantasy, but towards the end of the retreat we had gotten a general layout of the album and decided to take a 24 hour break to reset and check back in the following day with fresh ears.\n\nIn the morning, I decided to take some mushrooms and meditate. The house was this Mediterranean palace placed right on the edge of a mountain, overlooking the ocean with a sprawling backyard. I sat myself in the grass and closed my eyes, just as the shrooms started hitting. I got a little anxious about thirty minutes in, but this voice in my head started softly repeating \"surrender to the moment, stop trying to control it\" and when i listened, it brought me a peace that had a melody attached to it. Ten minutes later I'd written deep breath in the sun, and that little mantra repeating in my head can be heard in the outro of it. \n\ni got really emotional after laying deep breath down. i couldn't stop crying thinking about my mom, and how i probably would never know how it felt to be a mother looking at their child. images of me as a baby in a sea of sheets, her gentle voice lulling me to sleep were clear in my head, it all felt so profound. i heard in my head what i thought it must have felt like to be her, tender and fragile but also unshakable and unequivocally deep. i ran inside with tears still in my eyes, sat at the grand piano, and recorded what became do you know how much i love you. to this day i regard it as the most powerful piece of music i've ever made.\n\nAt sunset, we drove down to the beach and i hopped in the water as the sun went down. The image used for this piece was a super8 frame from that moment. Everything was so beautiful. I was with some of my best friends of my entire life, swimming in southern california, and had just made two of my favorite songs ever. We went back up to the house and in the glow of twilight i hopped on a trampoline at a property across the street with my friend Tak taking photos on his Contax. That's where the album cover art came from. \n\nAn hour later the sun had gone down and I was sitting on the floor of wheaty's room playing guitar. I was still pretty high when a full blood moon started rising up out of the ocean, running a glowing red streak across its surface. I felt so connected to the universe at that moment I swore I could hear it talking to me, and I went outside with a couple of buddies and started just howling. I went back inside, picked up the guitar, and tracked the first half of can you hear the moon sat down on the floor. I met everyone downstairs for dinner, talked a while and went back upstairs and finished it.\n\nAfter we'd left Malibu I realized just how much those songs meant to me, and how much sense they made together. So I made them flow nicely into one another, polished them up individually, and turned it over to the world as The In Between.\n\nI hope that this body of work has or does resonate with you as much as it has for me.\n\nThe winner of this piece will receive:\n\n- (2) VIP tickets to any non-private/festival Grady shows in perpetuity\n- Access to a token gated archive of demos/ future releases by Grady via $LOVE tokens\n- The In Between signed poster\n- The  In Between t-shirt\n- The In Between .jpeg file\n- The In Between .wav file\n\n25% of all secondary sales will go to a non-profit voted by $LOVE token holders.",
+  "image": {
+    "size": null,
+    "url": "https://zora-prod.mypinata.cloud/ipfs/bafybeibijaztz5lzbizndwp3yfple5vq6kzxn7nbxyjgrj55cw7fpzuima",
+    "mimeType": "image/jpeg",
+    "mediaEncoding": {
+      "__typename": "ImageEncodingTypes",
+      "original": "https://api.zora.co/media/ETHEREUM-MAINNET/0xabefbc9fd2f806065b4f3c237d4b59d9a97bcac7/5880/image/original",
+      "large": "https://api.zora.co/media/ETHEREUM-MAINNET/0xabefbc9fd2f806065b4f3c237d4b59d9a97bcac7/5880/image/large",
+      "poster": "https://api.zora.co/media/ETHEREUM-MAINNET/0xabefbc9fd2f806065b4f3c237d4b59d9a97bcac7/5880/image/poster",
+      "thumbnail": "https://api.zora.co/media/ETHEREUM-MAINNET/0xabefbc9fd2f806065b4f3c237d4b59d9a97bcac7/5880/image/thumbnail"
+    }
+  },
+  "content": {
+    "size": null,
+    "url": "https://ipfs.io/ipfs/bafybeibvdmulxajkjopdtjadoxaivkewawt6mhajb6decgasymrkkrk3dq",
+    "mimeType": "audio/wav",
+    "mediaEncoding": {
+      "__typename": "AudioEncodingTypes",
+      "original": "https://api.zora.co/media/ETHEREUM-MAINNET/0xabefbc9fd2f806065b4f3c237d4b59d9a97bcac7/5880/content/original",
+      "large": "https://api.zora.co/media/ETHEREUM-MAINNET/0xabefbc9fd2f806065b4f3c237d4b59d9a97bcac7/5880/content/large"
+    }
+  }
+}

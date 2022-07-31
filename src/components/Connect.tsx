@@ -6,7 +6,7 @@ import {
   WalletMultiButton,
 } from "@solana/wallet-adapter-react-ui";
 
-import img from "./air-host.png";
+import img from "../img/air-host.png";
 
 import styled from "styled-components";
 
