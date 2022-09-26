@@ -2,10 +2,46 @@ import axios from "axios";
 import * as React from "react";
 import { useEffect, useState } from "react";
 
-const NinaContext = React.createContext(null);
+const NinaContext = React.createContext<Nina>(null);
+
+type Nina = {
+  tracks?: Track[];
+  ownerMap?: any;
+  bucketedOwners?: any;
+};
+
+type Track = {
+  datetime: Date;
+  metadata: TrackMetadata;
+  mint: string;
+  publicKey: string;
+  publisher: string;
+};
+
+type TrackMetadata = {
+  animation_url: string; // audio url
+  attributes: any[];
+  collection: any;
+  description: string;
+  external_url: string;
+  image: string;
+  name: string; // "Corporation Plaza - Recharge Week"
+  properties: TrackProperties;
+  seller_fee_basis_points: string;
+  symbol: string; // "CORP001"
+};
+
+type TrackProperties = {
+  artist: string; // "Corporation Plaza"
+  category: string; //"audio"
+  creators: any;
+  date: Date;
+  files: any;
+  title: string; //"Recharge Week"
+};
 
 function NinaProvider({ children }) {
-  const [tracks, setTracks] = useState<any[]>();
+  const [tracks, setTracks] = useState<Track[]>();
   const [investorMap, setInvestorMap] = useState<any[]>();
 
   const fetchTracks = async () => {
@@ -15,8 +51,14 @@ function NinaProvider({ children }) {
     );
     const tracks = await resp.json();
 
-    setTracks(tracks.published);
-    return tracks.published;
+    const publishedTracks = tracks.published as Track[];
+
+    publishedTracks.sort((a, b) => {
+      return new Date(b.datetime).getTime() - new Date(a.datetime).getTime();
+    });
+
+    setTracks(publishedTracks);
+    return publishedTracks;
   };
 
   const fetchTrackInvestors = async (trackId) => {
@@ -53,18 +95,6 @@ function NinaProvider({ children }) {
     return [...new Set([...track.collectors, ...accum])];
   }, []);
 
-  const boardOfDirectors = allCollectors?.reduce((accum, collector) => {
-    const pass = investorMap.reduce((accum, track) => {
-      return track.collectors.includes(collector) && accum;
-    }, true);
-    console.log(pass);
-
-    if (pass) {
-      return [collector, ...accum];
-    }
-    return accum;
-  }, []);
-
   const ownerMap = allCollectors?.reduce((accum, collector) => {
     const hasTracks = investorMap.map((track) => {
       return track.collectors.includes(collector);
@@ -80,14 +110,26 @@ function NinaProvider({ children }) {
     return [{ collector, numberOwned }, ...accum];
   }, []);
 
-  ownerMap.sort((a, b) => {
-    return b.numberOwned - a.numberOwned;
-  });
-  console.log(boardOfDirectors);
-  console.log(ownerMap);
+  const totalTracks = tracks?.length;
+  const bucketedOwners = {};
+  for (let i = 1; i <= totalTracks; i++) {
+    bucketedOwners[i] = ownerMap
+      ?.filter((owner) => owner.numberOwned === i)
+      .map((owner) => owner.collector);
+  }
 
-  const value = { tracks, investorMap };
+  console.log(bucketedOwners);
+
+  const value = { tracks, ownerMap, bucketedOwners };
   return <NinaContext.Provider value={value}>{children}</NinaContext.Provider>;
 }
 
-export { NinaProvider };
+function useNina() {
+  const context = React.useContext(NinaContext);
+  if (context === undefined) {
+    throw new Error("useNina must be used within a NinaProvider");
+  }
+  return context;
+}
+
+export { NinaProvider, useNina };

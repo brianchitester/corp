@@ -73,7 +73,6 @@ const ConnectContainer = styled.div`
 const ConnectButtons = styled.div`
   display: flex;
   gap: 20px;
-  align-self: ;
 `;
 
 export default Connect;
