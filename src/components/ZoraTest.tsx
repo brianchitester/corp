@@ -42,26 +42,27 @@ function ZoraTest() {
   }
   console.log(JSON.stringify(tokens));
 
-  const songs = tokens?.tokens?.nodes.map((node) => {
-    const name = node?.token?.name?.split(" - ");
-    if (name.length < 2) {
-      console.log(node?.token.name);
-      console.log(JSON.stringify(node?.token?.metadata));
-    }
+  const songs = tokens?.tokens?.nodes
+    .map((node) => {
+      const name = node?.token?.name?.split(" - ");
+      if (name.length < 2) {
+        console.log(node?.token.name);
+        console.log(JSON.stringify(node?.token?.metadata));
+      }
 
-    const artist = name && name.length > 2 ? name[0] : "";
-    const track = name && name.length > 2 ? name[1] : "";
-    return {
-      artist,
-      track,
-      description: node.token.description,
-      imageUrl: ipfsToHTTPS(node?.token?.image?.url || ""),
-      wavUrl: ipfsToHTTPS(node?.token?.content?.url || ""),
-      owner: node.token.owner,
-      meta: node?.token?.metadata,
-    };
-  });
-  //.filter((song) => !!song.artist);
+      const artist = name && name.length > 2 ? name[0] : "";
+      const track = name && name.length > 2 ? name[1] : "";
+      return {
+        artist,
+        track,
+        description: node.token.description,
+        imageUrl: ipfsToHTTPS(node?.token?.image?.url || ""),
+        wavUrl: ipfsToHTTPS(node?.token?.content?.url || ""),
+        owner: node.token.owner,
+        meta: node?.token?.metadata,
+      };
+    })
+    .filter((song) => song.imageUrl.length > 0);
 
   return (
     <div>

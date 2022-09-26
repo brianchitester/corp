@@ -16,7 +16,8 @@ import {
   SolanaMobileWalletAdapter,
 } from "@solana-mobile/wallet-adapter-mobile";
 import Connect from "./Connect";
-import ZoraTest from "./ZoraTest";
+import Investors from "./Investors";
+import { NinaProvider } from "../context/nina";
 
 // Default styles that can be overridden by your app
 require("@solana/wallet-adapter-react-ui/styles.css");
@@ -46,8 +47,10 @@ export const Wallet: FC = () => {
     <ConnectionProvider endpoint={endpoint}>
       <WalletProvider wallets={wallets} autoConnect>
         <WalletModalProvider>
-          <Connect />
-          <ZoraTest />
+          <NinaProvider>
+            <Connect />
+            <Investors />
+          </NinaProvider>
         </WalletModalProvider>
       </WalletProvider>
     </ConnectionProvider>
