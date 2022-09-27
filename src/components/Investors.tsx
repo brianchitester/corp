@@ -41,7 +41,10 @@ function Investors() {
                   return (
                     <div key={owner}>
                       {isConnected && "⭐"}
-                      {owner}
+                      {`${owner.slice(0, 4)}...${owner.slice(
+                        owner.length - 4,
+                        owner.length
+                      )}`}
                       {isConnected && "⭐"}
                     </div>
                   );
@@ -63,16 +66,16 @@ const InvestorsContainer = styled.div`
 
 const LevelsContainer = styled(Window)`
   display: flex;
-  flex-direction: column-reverse;
-  width: fit-content;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  flex-wrap: wrap-reverse;
   padding: 20px;
   gap: 20px;
 `;
 
 const LevelContainer = styled(Fieldset)`
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
+  flex-grow: 1;
+  min-width: 300px;
 `;
 
 export default Investors;
