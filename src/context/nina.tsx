@@ -7,9 +7,10 @@ type Nina = {
   tracks?: Track[];
   ownerMap?: any;
   bucketedOwners?: any;
+  investorMap?: any;
 };
 
-type Track = {
+export type Track = {
   datetime: Date;
   metadata: TrackMetadata;
   mint: string;
@@ -88,6 +89,7 @@ function NinaProvider({ children }) {
     } else {
       getInvestorMap(tracks);
     }
+    // eslint-disable-next-line
   }, [tracks]);
 
   const allCollectors = investorMap?.reduce((accum, track) => {
@@ -117,7 +119,7 @@ function NinaProvider({ children }) {
       .map((owner) => owner.collector);
   }
 
-  const value = { tracks, ownerMap, bucketedOwners };
+  const value = { tracks, ownerMap, bucketedOwners, investorMap };
   return <NinaContext.Provider value={value}>{children}</NinaContext.Provider>;
 }
 

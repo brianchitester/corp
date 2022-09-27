@@ -37,12 +37,12 @@ function Connect() {
   useEffect(() => {
     if (publicKey) {
       getResult(publicKey).then((res) => {
-        console.log(res);
         return setHasCorpTokens(
           res.some((tokenResult) => tokenResult.value.length > 0)
         );
       });
     }
+    // eslint-disable-next-line
   }, [publicKey]);
 
   return (

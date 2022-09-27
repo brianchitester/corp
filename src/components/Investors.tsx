@@ -1,12 +1,28 @@
 import React from "react";
 import { useNina } from "../context/nina";
+import { Window, Fieldset } from "react95";
 
 import img from "../img/air-host.png";
 
 import styled from "styled-components";
+import { useWallet } from "@solana/wallet-adapter-react";
 
 function Investors() {
-  const { bucketedOwners } = useNina();
+  const { bucketedOwners, tracks } = useNina();
+  const { publicKey } = useWallet();
+
+  const getLevelText = (level) => {
+    switch (level - tracks?.length) {
+      case 0:
+        return "Board of Directors";
+      case -1:
+        return "Executive Board";
+      case -2:
+        return "Advisory Board";
+      default:
+        return `Retail Investors (Tier ${level})`;
+    }
+  };
 
   return (
     <InvestorsContainer>
@@ -14,17 +30,22 @@ function Investors() {
       <LevelsContainer>
         {Object.keys(bucketedOwners).map((level) => {
           const ownerList = bucketedOwners[level];
-          console.log(bucketedOwners);
           if (!ownerList?.length) {
             return null;
           }
           return (
-            <LevelContainer>
-              <h2>{level}</h2>
+            <LevelContainer key={level} label={getLevelText(level)}>
               <ul>
-                {ownerList.map((owner) => (
-                  <div>{owner}</div>
-                ))}
+                {ownerList.map((owner) => {
+                  const isConnected = publicKey?.toString() === owner;
+                  return (
+                    <div key={owner}>
+                      {isConnected && "⭐"}
+                      {owner}
+                      {isConnected && "⭐"}
+                    </div>
+                  );
+                })}
               </ul>
             </LevelContainer>
           );
@@ -37,15 +58,18 @@ function Investors() {
 const InvestorsContainer = styled.div`
   padding: 20px;
   background-image: url(${img});
+  padding-bottom: 100px;
 `;
 
-const LevelsContainer = styled.div`
+const LevelsContainer = styled(Window)`
   display: flex;
   flex-direction: column-reverse;
+  width: fit-content;
+  padding: 20px;
   gap: 20px;
 `;
 
-const LevelContainer = styled.div`
+const LevelContainer = styled(Fieldset)`
   display: flex;
   flex-direction: row;
   gap: 20px;

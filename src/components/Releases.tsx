@@ -5,17 +5,27 @@ import { Window, WindowContent, WindowHeader, Button } from "react95";
 import img from "../img/air-host.png";
 
 import styled from "styled-components";
+import { usePlayer } from "../context/player";
+import { useWallet } from "@solana/wallet-adapter-react";
 
 function Releases() {
-  const { tracks } = useNina();
-  console.log(tracks);
+  const { tracks, investorMap } = useNina();
+  const { currentTrack, setCurrentTrack, playing } = usePlayer();
+  const { publicKey } = useWallet();
+
+  const publicKeyString = publicKey?.toString() ?? "";
+
   return (
     <ReleasesContainer>
       <h1>Releases</h1>
       <TracksContainer>
         {tracks?.map((track) => {
+          const trackCollectors = investorMap?.find(
+            (inv) => inv.trackId === track.publicKey
+          )?.collectors;
+          const hasTrack = trackCollectors?.includes(publicKeyString);
           return (
-            <StyledWindow>
+            <StyledWindow key={track.metadata.symbol}>
               <WindowHeader>
                 <span>{track.metadata.symbol}</span>
               </WindowHeader>
@@ -24,14 +34,22 @@ function Releases() {
                 <StyledH2>{track.metadata.properties.title}</StyledH2>
                 <StyledP>{track.metadata.description}</StyledP>
                 <HStack>
-                  <Button>▶️</Button>
                   <Button
                     onClick={() =>
-                      window.location.assign(track.metadata.external_url)
+                      currentTrack?.metadata.symbol === track.metadata.symbol &&
+                      playing
+                        ? setCurrentTrack(null)
+                        : setCurrentTrack(track)
                     }
                   >
-                    🛒
+                    {currentTrack?.metadata.symbol === track.metadata.symbol &&
+                    playing
+                      ? "⏸️"
+                      : "▶️"}
                   </Button>
+                  <StyledA href={track.metadata.external_url}>
+                    <Button>{hasTrack ? "✅" : "🛒"}</Button>
+                  </StyledA>
                 </HStack>
               </WindowContent>
             </StyledWindow>
@@ -74,6 +92,10 @@ const StyledP = styled.p`
 const HStack = styled.div`
   display: flex;
   justify-content: space-between;
+`;
+
+const StyledA = styled.a`
+  text-decoration: none;
 `;
 
 export default Releases;
