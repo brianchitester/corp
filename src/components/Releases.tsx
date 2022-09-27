@@ -1,6 +1,6 @@
 import React from "react";
 import { useNina } from "../context/nina";
-import { Window, WindowContent, WindowHeader, Button } from "react95";
+import { Window, WindowContent, WindowHeader, Button, Tooltip } from "react95";
 
 import img from "../img/air-host.png";
 
@@ -47,9 +47,15 @@ function Releases() {
                       ? "⏸️"
                       : "▶️"}
                   </Button>
-                  <StyledA href={track.metadata.external_url} target="_blank">
-                    <Button>{hasTrack ? "✅" : "🛒"}</Button>
-                  </StyledA>
+                  <Tooltip
+                    text={hasTrack ? "You Own This!" : "Buy on Nina"}
+                    enterDelay={500}
+                    leaveDelay={100}
+                  >
+                    <StyledA href={track.metadata.external_url} target="_blank">
+                      <Button>{hasTrack ? "✅" : "🛒"}</Button>
+                    </StyledA>
+                  </Tooltip>
                 </HStack>
               </WindowContent>
             </StyledWindow>
