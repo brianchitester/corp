@@ -42,8 +42,8 @@ function PlayerProvider({ children }) {
         <audio src={currentTrack?.metadata?.animation_url} ref={playerRef} />
       )}
       <PlayerContainer>
+        <Cover src={currentTrack?.metadata?.image} />
         <TrackTitle>{currentTrack?.metadata?.properties?.title}</TrackTitle>
-
         <Button
           onClick={() => {
             const newSeek = seek - 10;
@@ -53,7 +53,6 @@ function PlayerProvider({ children }) {
         >
           ⏪
         </Button>
-
         <Button
           onClick={() => {
             if (playing) {
@@ -101,6 +100,11 @@ const TrackTitle = styled.h3`
 
 const StyledProgress = styled(Progress)`
   max-width: 50%;
+`;
+
+const Cover = styled.img`
+  width: 30px;
+  height: 30px;
 `;
 
 function usePlayer() {

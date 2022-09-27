@@ -20,6 +20,7 @@ import Investors from "./Investors";
 import { NinaProvider } from "../context/nina";
 import Releases from "./Releases";
 import { PlayerProvider } from "../context/player";
+import Weblinks from "./Weblinks";
 
 // Default styles that can be overridden by your app
 require("@solana/wallet-adapter-react-ui/styles.css");
@@ -54,6 +55,7 @@ export const Wallet: FC = () => {
               <Connect />
               <Releases />
               <Investors />
+              <Weblinks />
             </PlayerProvider>
           </NinaProvider>
         </WalletModalProvider>

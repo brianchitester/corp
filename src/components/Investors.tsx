@@ -61,7 +61,6 @@ function Investors() {
 const InvestorsContainer = styled.div`
   padding: 20px;
   background-image: url(${img});
-  padding-bottom: 100px;
 `;
 
 const LevelsContainer = styled(Window)`
