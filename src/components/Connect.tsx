@@ -47,13 +47,16 @@ function Connect() {
 
   return (
     <ConnectContainer>
-      {!publicKey ? (
-        <div>Welcome, please connect wallet to enable business</div>
-      ) : hasCorpTokens ? (
-        <div>Were in business</div>
-      ) : (
-        <div>Were not in business</div>
-      )}
+      <VStack>
+        <StyledH1>Corporation Plaza e-business lounge</StyledH1>
+        {!publicKey ? (
+          <div>Welcome, please connect wallet to enable business</div>
+        ) : hasCorpTokens ? (
+          <div>Were in business</div>
+        ) : (
+          <div>Were not in business</div>
+        )}
+      </VStack>
       <ConnectButtons>
         <WalletMultiButton style={{ backgroundColor: "blue" }} />
         <WalletDisconnectButton />
@@ -73,6 +76,16 @@ const ConnectContainer = styled.div`
 const ConnectButtons = styled.div`
   display: flex;
   gap: 20px;
+`;
+
+const VStack = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`;
+
+const StyledH1 = styled.h1`
+  margin-bottom: 0;
 `;
 
 export default Connect;

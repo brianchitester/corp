@@ -16,7 +16,7 @@ function Investors() {
           const ownerList = bucketedOwners[level];
           console.log(bucketedOwners);
           if (!ownerList?.length) {
-            return;
+            return null;
           }
           return (
             <LevelContainer>

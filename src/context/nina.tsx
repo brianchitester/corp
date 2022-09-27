@@ -1,4 +1,3 @@
-import axios from "axios";
 import * as React from "react";
 import { useEffect, useState } from "react";
 
@@ -117,8 +116,6 @@ function NinaProvider({ children }) {
       ?.filter((owner) => owner.numberOwned === i)
       .map((owner) => owner.collector);
   }
-
-  console.log(bucketedOwners);
 
   const value = { tracks, ownerMap, bucketedOwners };
   return <NinaContext.Provider value={value}>{children}</NinaContext.Provider>;
