@@ -67,14 +67,17 @@ function Connect() {
 
 const ConnectContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
   padding: 20px;
   align-items: flex-end;
   justify-content: space-between;
+  gap: 10px;
   background-image: url(${img});
 `;
 
 const ConnectButtons = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
 `;
 
