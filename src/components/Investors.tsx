@@ -75,7 +75,7 @@ const LevelsContainer = styled(Window)`
 
 const LevelContainer = styled(Fieldset)`
   flex-grow: 1;
-  min-width: 300px;
+  min-width: 250px;
 `;
 
 export default Investors;
