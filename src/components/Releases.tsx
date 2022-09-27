@@ -47,7 +47,7 @@ function Releases() {
                       ? "⏸️"
                       : "▶️"}
                   </Button>
-                  <StyledA href={track.metadata.external_url}>
+                  <StyledA href={track.metadata.external_url} target="_blank">
                     <Button>{hasTrack ? "✅" : "🛒"}</Button>
                   </StyledA>
                 </HStack>
