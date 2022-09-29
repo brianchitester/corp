@@ -28,6 +28,11 @@ function Weblinks() {
           <StyledListItem>Web 2.0</StyledListItem>
         </a>
       </List>
+      <div>
+        <a href="https://react95.io/" target="_blank" rel="noreferrer">
+          made with react95
+        </a>
+      </div>
     </WeblinksContainer>
   );
 }
